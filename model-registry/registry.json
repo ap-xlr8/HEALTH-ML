@@ -1,6 +1,6 @@
 {
   "registry_version": "1.0.0",
-  "updated_at": "2026-08-15T10:03:42.085451+00:00",
+  "updated_at": "2026-08-15T14:51:14.097520+00:00",
   "models": {
     "heart_rate_anomaly": {
       "1.0.0": {
@@ -14,38 +14,38 @@
           "backend"
         ],
         "training": {
-          "date": "2026-08-15T10:03:30.105541+00:00",
-          "datasetHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "date": "2026-08-15T14:51:03.540377+00:00",
+          "datasetHash": "0770796168966987cf98340d497a5e01e6cc8936dbd27ce7a133cb18ad7a7346",
           "patientCount": 30,
           "sampleCount": 3600,
           "algorithm": "IsolationForest",
           "hyperparameters": {
-            "contamination": 0.05,
+            "contamination": 0.05476190476190476,
             "n_estimators": 100
           }
         },
         "evaluation": {
-          "recall": 0.6552,
-          "precision": 0.5135,
-          "specificity": 0.9601,
-          "false_positive_rate": 0.0399,
-          "f1_score": 0.5758,
-          "true_positives": 19,
-          "false_positives": 18,
-          "true_negatives": 433,
-          "false_negatives": 10,
-          "auc_roc": 0.9566,
-          "latency_mean_ms": 14.169,
-          "latency_p95_ms": 18.431,
-          "latency_p99_ms": 20.254,
-          "latency_min_ms": 11.765,
-          "latency_max_ms": 49.127,
-          "size_kb": 1202.47,
-          "size_mb": 1.174
+          "recall": 0.5217,
+          "precision": 0.4286,
+          "specificity": 0.965,
+          "false_positive_rate": 0.035,
+          "f1_score": 0.4706,
+          "true_positives": 12,
+          "false_positives": 16,
+          "true_negatives": 441,
+          "false_negatives": 11,
+          "auc_roc": 0.9514,
+          "latency_mean_ms": 11.466,
+          "latency_p95_ms": 13.075,
+          "latency_p99_ms": 15.354,
+          "latency_min_ms": 10.532,
+          "latency_max_ms": 17.373,
+          "size_kb": 1175.31,
+          "size_mb": 1.148
         },
         "artifacts": {
-          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_heart_rate_training_pipel0/hr_model/model.pkl",
-          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_heart_rate_training_pipel0/hr_model/normalizer.pkl",
+          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_heart_rate_training_pipel0/hr_model/model.pkl",
+          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_heart_rate_training_pipel0/hr_model/normalizer.pkl",
           "evaluation_report": "evaluation/reports/heart_rate_anomaly_1.0.0_evaluation.json"
         },
         "deployment": {
@@ -65,7 +65,7 @@
           "android"
         ],
         "training": {
-          "date": "2026-08-15T10:03:30.901208+00:00",
+          "date": "2026-08-15T14:51:04.314504+00:00",
           "datasetHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "patientCount": 30,
           "sampleCount": 3600,
@@ -82,22 +82,22 @@
           "specificity": 1.0,
           "false_positive_rate": 0.0,
           "f1_score": 1.0,
-          "true_positives": 5,
+          "true_positives": 7,
           "false_positives": 0,
-          "true_negatives": 475,
+          "true_negatives": 473,
           "false_negatives": 0,
           "auc_roc": 1.0,
-          "latency_mean_ms": 5.132,
-          "latency_p95_ms": 6.412,
-          "latency_p99_ms": 6.919,
-          "latency_min_ms": 4.403,
-          "latency_max_ms": 7.028,
-          "size_kb": 78.75,
-          "size_mb": 0.077
+          "latency_mean_ms": 4.709,
+          "latency_p95_ms": 6.725,
+          "latency_p99_ms": 7.131,
+          "latency_min_ms": 3.886,
+          "latency_max_ms": 7.525,
+          "size_kb": 80.0,
+          "size_mb": 0.078
         },
         "artifacts": {
-          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_spo2_critical_training_pi0/spo2_model/model.pkl",
-          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_spo2_critical_training_pi0/spo2_model/normalizer.pkl",
+          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_spo2_critical_training_pi0/spo2_model/model.pkl",
+          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_spo2_critical_training_pi0/spo2_model/normalizer.pkl",
           "evaluation_report": "evaluation/reports/spo2_critical_1.0.0_evaluation.json"
         },
         "deployment": {
@@ -117,7 +117,7 @@
           "backend"
         ],
         "training": {
-          "date": "2026-08-15T10:03:34.015385+00:00",
+          "date": "2026-08-15T14:51:07.337458+00:00",
           "datasetHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "patientCount": 30,
           "sampleCount": 3600,
@@ -132,27 +132,27 @@
           }
         },
         "evaluation": {
-          "recall": 0.3448,
-          "precision": 0.122,
-          "specificity": 0.8404,
-          "false_positive_rate": 0.1596,
-          "f1_score": 0.1802,
-          "true_positives": 10,
-          "false_positives": 72,
-          "true_negatives": 379,
-          "false_negatives": 19,
-          "auc_roc": 0.6845,
-          "latency_mean_ms": 0.477,
-          "latency_p95_ms": 0.675,
-          "latency_p99_ms": 0.942,
-          "latency_min_ms": 0.238,
-          "latency_max_ms": 1.387,
-          "size_kb": 17.51,
+          "recall": 0.3913,
+          "precision": 0.12,
+          "specificity": 0.8556,
+          "false_positive_rate": 0.1444,
+          "f1_score": 0.1837,
+          "true_positives": 9,
+          "false_positives": 66,
+          "true_negatives": 391,
+          "false_negatives": 14,
+          "auc_roc": 0.603,
+          "latency_mean_ms": 0.282,
+          "latency_p95_ms": 0.371,
+          "latency_p99_ms": 0.408,
+          "latency_min_ms": 0.247,
+          "latency_max_ms": 0.586,
+          "size_kb": 17.37,
           "size_mb": 0.017
         },
         "artifacts": {
-          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_combined_vitals_training_0/vitals_model/model.pkl",
-          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_combined_vitals_training_0/vitals_model/normalizer.pkl",
+          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_combined_vitals_training_0/vitals_model/model.pkl",
+          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_combined_vitals_training_0/vitals_model/normalizer.pkl",
           "evaluation_report": "evaluation/reports/combined_vitals_1.0.0_evaluation.json"
         },
         "deployment": {
@@ -172,7 +172,7 @@
           "android"
         ],
         "training": {
-          "date": "2026-08-15T10:03:35.101130+00:00",
+          "date": "2026-08-15T14:51:08.103698+00:00",
           "datasetHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "patientCount": 30,
           "sampleCount": 960,
@@ -185,17 +185,17 @@
         "evaluation": {
           "accuracy": 0.8594,
           "val_samples": 128,
-          "latency_mean_ms": 7.355,
-          "latency_p95_ms": 12.328,
-          "latency_p99_ms": 13.791,
-          "latency_min_ms": 5.544,
-          "latency_max_ms": 14.773,
-          "size_kb": 238.54,
-          "size_mb": 0.233
+          "latency_mean_ms": 5.012,
+          "latency_p95_ms": 5.47,
+          "latency_p99_ms": 8.653,
+          "latency_min_ms": 4.661,
+          "latency_max_ms": 10.399,
+          "size_kb": 236.1,
+          "size_mb": 0.231
         },
         "artifacts": {
-          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_sleep_quality_training_pi0/sleep_model/model.pkl",
-          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_sleep_quality_training_pi0/sleep_model/normalizer.pkl",
+          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_sleep_quality_training_pi0/sleep_model/model.pkl",
+          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_sleep_quality_training_pi0/sleep_model/normalizer.pkl",
           "evaluation_report": "evaluation/reports/sleep_quality_1.0.0_evaluation.json"
         },
         "deployment": {
@@ -215,7 +215,7 @@
           "android"
         ],
         "training": {
-          "date": "2026-08-15T10:03:36.438518+00:00",
+          "date": "2026-08-15T14:51:09.174347+00:00",
           "datasetHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "patientCount": 30,
           "sampleCount": 3600,
@@ -234,19 +234,19 @@
           }
         },
         "evaluation": {
-          "accuracy": 0.9979,
+          "accuracy": 1.0,
           "val_samples": 480,
-          "latency_mean_ms": 0.539,
-          "latency_p95_ms": 0.723,
-          "latency_p99_ms": 1.238,
-          "latency_min_ms": 0.338,
-          "latency_max_ms": 2.069,
-          "size_kb": 22.86,
+          "latency_mean_ms": 0.376,
+          "latency_p95_ms": 0.431,
+          "latency_p99_ms": 0.523,
+          "latency_min_ms": 0.346,
+          "latency_max_ms": 0.647,
+          "size_kb": 22.83,
           "size_mb": 0.022
         },
         "artifacts": {
-          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_activity_recognition_trai0/activity_model/model.pkl",
-          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_activity_recognition_trai0/activity_model/normalizer.pkl",
+          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_activity_recognition_trai0/activity_model/model.pkl",
+          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_activity_recognition_trai0/activity_model/normalizer.pkl",
           "evaluation_report": "evaluation/reports/activity_recognition_1.0.0_evaluation.json"
         },
         "deployment": {
@@ -267,7 +267,7 @@
           "backend"
         ],
         "training": {
-          "date": "2026-08-15T10:03:37.019156+00:00",
+          "date": "2026-08-15T14:51:09.643988+00:00",
           "datasetHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "patientCount": 30,
           "sampleCount": 3600,
@@ -283,27 +283,27 @@
           }
         },
         "evaluation": {
-          "recall": 0.5238,
-          "precision": 0.6875,
-          "specificity": 0.9891,
-          "false_positive_rate": 0.0109,
-          "f1_score": 0.5946,
-          "true_positives": 11,
-          "false_positives": 5,
-          "true_negatives": 454,
-          "false_negatives": 10,
-          "auc_roc": 0.9535,
-          "latency_mean_ms": 0.466,
-          "latency_p95_ms": 0.594,
-          "latency_p99_ms": 0.663,
-          "latency_min_ms": 0.404,
-          "latency_max_ms": 0.773,
-          "size_kb": 116.04,
-          "size_mb": 0.113
+          "recall": 0.5714,
+          "precision": 0.6667,
+          "specificity": 0.9914,
+          "false_positive_rate": 0.0086,
+          "f1_score": 0.6154,
+          "true_positives": 8,
+          "false_positives": 4,
+          "true_negatives": 462,
+          "false_negatives": 6,
+          "auc_roc": 0.9733,
+          "latency_mean_ms": 0.498,
+          "latency_p95_ms": 0.692,
+          "latency_p99_ms": 0.85,
+          "latency_min_ms": 0.428,
+          "latency_max_ms": 0.892,
+          "size_kb": 122.65,
+          "size_mb": 0.12
         },
         "artifacts": {
-          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_glucose_patterns_training0/glucose_model/model.pkl",
-          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_glucose_patterns_training0/glucose_model/normalizer.pkl",
+          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_glucose_patterns_training0/glucose_model/model.pkl",
+          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_glucose_patterns_training0/glucose_model/normalizer.pkl",
           "evaluation_report": "evaluation/reports/glucose_patterns_1.0.0_evaluation.json"
         },
         "deployment": {
@@ -323,8 +323,8 @@
           "backend"
         ],
         "training": {
-          "date": "2026-08-15T10:03:42.084932+00:00",
-          "datasetHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "date": "2026-08-15T14:51:14.097024+00:00",
+          "datasetHash": "0770796168966987cf98340d497a5e01e6cc8936dbd27ce7a133cb18ad7a7346",
           "patientCount": 30,
           "sampleCount": 3600,
           "algorithm": "HistGradientBoostingRegressor",
@@ -334,20 +334,20 @@
           }
         },
         "evaluation": {
-          "mean_squared_error": 16.0161,
-          "r2_score": 0.911,
-          "rmse": 4.002,
-          "latency_mean_ms": 3.107,
-          "latency_p95_ms": 3.856,
-          "latency_p99_ms": 4.486,
-          "latency_min_ms": 2.158,
-          "latency_max_ms": 4.908,
-          "size_kb": 437.0,
+          "mean_squared_error": 13.9208,
+          "r2_score": 0.9262,
+          "rmse": 3.7311,
+          "latency_mean_ms": 2.695,
+          "latency_p95_ms": 3.456,
+          "latency_p99_ms": 3.815,
+          "latency_min_ms": 2.014,
+          "latency_max_ms": 4.04,
+          "size_kb": 437.49,
           "size_mb": 0.427
         },
         "artifacts": {
-          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_risk_scoring_training_pip0/risk_model/model.pkl",
-          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-3/test_risk_scoring_training_pip0/risk_model/normalizer.pkl",
+          "model_pkl": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_risk_scoring_training_pip0/risk_model/model.pkl",
+          "normalizer": "C:/Users/alexi/AppData/Local/Temp/pytest-of-alexi/pytest-8/test_risk_scoring_training_pip0/risk_model/normalizer.pkl",
           "evaluation_report": "evaluation/reports/risk_score_1.0.0_evaluation.json"
         },
         "deployment": {

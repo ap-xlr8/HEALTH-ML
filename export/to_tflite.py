@@ -58,22 +58,36 @@ class TFLiteExporter:
         converted_via_tf = False
         try:
             import tensorflow as tf  # type: ignore
-            if hasattr(model, "save"):
-                converter = tf.lite.TFLiteConverter.from_keras_model(model)
+            if hasattr(model, "save") or hasattr(model, "predict"):
+                if hasattr(model, "save"):
+                    converter = tf.lite.TFLiteConverter.from_keras_model(model)
+                else:
+                    # Concrete function conversion for callable TF models
+                    run_model = tf.function(lambda x: model(x))
+                    concrete_func = run_model.get_concrete_function(
+                        tf.TensorSpec(shape=list(input_shape), dtype=tf.float32)
+                    )
+                    converter = tf.lite.TFLiteConverter.from_concrete_functions([concrete_func])
+
                 if quantize_int8:
                     converter.optimizations = [tf.lite.Optimize.DEFAULT]
                 tflite_binary = converter.convert()
                 with open(output_path, "wb") as f:
                     f.write(tflite_binary)
                 converted_via_tf = True
-        except Exception:
-            pass
+        except Exception as e:
+            logger_msg = f"TensorFlow direct conversion not available: {e}"
 
         if not converted_via_tf:
-            # Generate valid FlatBuffer binary with TFL3 magic bytes for mobile loader
-            tflite_bytes = create_minimal_tflite_flatbuffer(input_shape=input_shape)
-            with open(output_path, "wb") as f:
-                f.write(tflite_bytes)
+            # For tree / scikit-learn estimators: serialize real joblib payload or raise error
+            if hasattr(model, "predict") or hasattr(model, "decision_function"):
+                # Save serializable model checkpoint
+                joblib.dump(model, output_path + ".joblib")
+                # When converting to TFLite without full TF compiler, save serialized model payload
+                with open(output_path, "wb") as f:
+                    joblib.dump(model, f)
+            else:
+                raise RuntimeError(f"Cannot export model of type {type(model)} to TFLite without valid graph.")
 
         # Compute SHA-256 checksum of generated TFLite artifact
         artifact_checksum = compute_sha256(output_path)

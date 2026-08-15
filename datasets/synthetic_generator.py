@@ -243,7 +243,12 @@ def generate_and_save_datasets(
 
     # HIPAA Encryption at rest
     if encrypt_storage:
-        key = encryption_key or os.getenv("DATA_ENCRYPTION_KEY", "b14ca5898a4e4133bbce2ea2315a1916")
+        key = encryption_key or os.getenv("DATA_ENCRYPTION_KEY")
+        if not key:
+            raise ValueError(
+                "DATA_ENCRYPTION_KEY environment variable (or encryption_key argument) "
+                "is required for AES-GCM dataset encryption at rest."
+            )
         with open(file_path, "rb") as f:
             raw_bytes = f.read()
         encrypted_bytes = encrypt_bytes_aes(raw_bytes, key)

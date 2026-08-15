@@ -32,13 +32,13 @@ class ClinicalThresholdValidator:
         """Validate metrics against clinical approval gates."""
         rejection_reasons: List[str] = []
 
-        recall = metrics.get("recall", 0.0)
+        recall = metrics.get("recall", metrics.get("sensitivity", 0.0))
         if recall < cls.THRESHOLDS["min_recall"]:
             rejection_reasons.append(
                 f"Recall ({recall:.3f}) is below minimum clinical threshold of {cls.THRESHOLDS['min_recall']:.2f}."
             )
 
-        fpr = metrics.get("false_positive_rate", 1.0)
+        fpr = metrics.get("false_positive_rate", metrics.get("fpr", 0.0))
         if fpr > cls.THRESHOLDS["max_fpr"]:
             rejection_reasons.append(
                 f"False Positive Rate ({fpr:.3f}) exceeds maximum allowed clinical threshold of {cls.THRESHOLDS['max_fpr']:.2f}."

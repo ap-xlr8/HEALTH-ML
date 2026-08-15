@@ -32,3 +32,17 @@ def test_clinical_expectations_validator_out_of_bounds():
     result = ClinicalDataValidator.validate_dataframe(df)
     assert result["success"] is False
     assert any("above clinical maximum" in err for err in result["errors"])
+
+
+def test_encryption_key_required_for_at_rest_storage(tmp_path, monkeypatch):
+    from datasets.synthetic_generator import generate_and_save_datasets
+    monkeypatch.delenv("DATA_ENCRYPTION_KEY", raising=False)
+    
+    with pytest.raises(ValueError, match="DATA_ENCRYPTION_KEY environment variable"):
+        generate_and_save_datasets(output_dir=str(tmp_path), encrypt_storage=True, encryption_key=None)
+
+    # Valid key (32 hex characters = 16 bytes = AES-128 or 64 hex = AES-256)
+    valid_key = "a1b2c3d4e5f60718293a4b5c6d7e8f90"
+    path = generate_and_save_datasets(output_dir=str(tmp_path), encrypt_storage=True, encryption_key=valid_key)
+    assert path.endswith(".parquet")
+

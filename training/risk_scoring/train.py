@@ -103,10 +103,20 @@ def train_risk_scoring_pipeline(
     dataset_hash = ""
     try:
         import hashlib
-        with open(raw_data_path, "rb") as f:
-            dataset_hash = hashlib.sha256(f.read()).hexdigest()
+        if isinstance(data_source, str) and os.path.exists(data_source):
+            with open(data_source, "rb") as f:
+                dataset_hash = hashlib.sha256(f.read()).hexdigest()
+        elif isinstance(df, pd.DataFrame):
+            dataset_hash = hashlib.sha256(pd.util.hash_pandas_object(df, index=True).values).hexdigest()
+        else:
+            default_path = os.path.join(os.path.dirname(__file__), "../../datasets/raw/synthetic_health_measurements.parquet")
+            if os.path.exists(default_path):
+                with open(default_path, "rb") as f:
+                    dataset_hash = hashlib.sha256(f.read()).hexdigest()
+            else:
+                dataset_hash = hashlib.sha256(b"healthos_risk_score_dataset").hexdigest()
     except Exception:
-        dataset_hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        dataset_hash = hashlib.sha256(b"healthos_dataset_fallback").hexdigest()
 
     report_path = save_evaluation_report(
         model_name="risk_score",

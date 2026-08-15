@@ -1,0 +1,18 @@
+# Health OS - Machine Learning Pinned Lockfile (Reproducible Dependencies)
+# Generated for Python 3.11+ / uv package manager
+numpy==2.2.3
+scipy==1.15.2
+pandas==2.2.3
+pyarrow==19.0.1
+scikit-learn==1.6.1
+joblib==1.4.2
+cryptography==44.0.1
+onnx==1.17.0
+skl2onnx==1.17.0
+pytest==9.1.1
+pytest-cov==6.0.0
+ruff==0.9.9
+black==25.1.0
+mypy==1.15.0
+bandit==1.8.3
+pip-audit==2.8.0

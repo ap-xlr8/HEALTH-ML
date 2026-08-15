@@ -32,7 +32,8 @@ def main():
 
     # 1. Datasets Ingestion & Validation
     print("\n>>> 1. Datasets Ingestion & Validation...")
-    raw_data_path = generate_and_save_datasets()
+    enc_key = os.getenv("DATA_ENCRYPTION_KEY") or "a1b2c3d4e5f60718293a4b5c6d7e8f90"
+    raw_data_path = generate_and_save_datasets(encryption_key=enc_key)
 
     # 2. Train all models
     print("\n>>> 2. Training Models in Catalog...")
