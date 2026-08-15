@@ -1,0 +1,5 @@
+{
+  "format": "portable_binary",
+  "n_features": 6,
+  "target": "backend_go"
+}

@@ -1,0 +1,157 @@
+{
+  "dataset_drift": true,
+  "drift_share": 0.391,
+  "drifted_features_count": 9,
+  "drifted_features": [
+    "hr_bpm",
+    "hrv_ms",
+    "spo2_percent",
+    "elevation_meters",
+    "resp_rate",
+    "temp_c",
+    "bp_sys",
+    "bp_dia",
+    "gyro_x"
+  ],
+  "feature_metrics": {
+    "hr_bpm": {
+      "ks_statistic": 0.081,
+      "p_value": 0.0,
+      "psi": 0.1039,
+      "drift_detected": true
+    },
+    "hrv_ms": {
+      "ks_statistic": 0.1045,
+      "p_value": 0.0,
+      "psi": 0.0718,
+      "drift_detected": true
+    },
+    "spo2_percent": {
+      "ks_statistic": 0.0515,
+      "p_value": 0.00993,
+      "psi": 0.0606,
+      "drift_detected": true
+    },
+    "elevation_meters": {
+      "ks_statistic": 0.2,
+      "p_value": 0.0,
+      "psi": 2.3522,
+      "drift_detected": true
+    },
+    "is_sleeping": {
+      "ks_statistic": 0.0,
+      "p_value": 1.0,
+      "psi": 0.0,
+      "drift_detected": false
+    },
+    "activity_intensity": {
+      "ks_statistic": 0.014,
+      "p_value": 0.98958,
+      "psi": 0.0017,
+      "drift_detected": false
+    },
+    "resp_rate": {
+      "ks_statistic": 0.0745,
+      "p_value": 3e-05,
+      "psi": 0.0311,
+      "drift_detected": true
+    },
+    "temp_c": {
+      "ks_statistic": 0.0675,
+      "p_value": 0.00022,
+      "psi": 0.0802,
+      "drift_detected": true
+    },
+    "bp_sys": {
+      "ks_statistic": 0.078,
+      "p_value": 1e-05,
+      "psi": 0.0299,
+      "drift_detected": true
+    },
+    "bp_dia": {
+      "ks_statistic": 0.211,
+      "p_value": 0.0,
+      "psi": 0.275,
+      "drift_detected": true
+    },
+    "movement_variance": {
+      "ks_statistic": 0.019,
+      "p_value": 0.8633,
+      "psi": 0.007,
+      "drift_detected": false
+    },
+    "accel_x": {
+      "ks_statistic": 0.033,
+      "p_value": 0.22624,
+      "psi": 0.0081,
+      "drift_detected": false
+    },
+    "accel_y": {
+      "ks_statistic": 0.023,
+      "p_value": 0.66553,
+      "psi": 0.0092,
+      "drift_detected": false
+    },
+    "accel_z": {
+      "ks_statistic": 0.022,
+      "p_value": 0.71851,
+      "psi": 0.0063,
+      "drift_detected": false
+    },
+    "gyro_x": {
+      "ks_statistic": 0.0445,
+      "p_value": 0.03809,
+      "psi": 0.0123,
+      "drift_detected": true
+    },
+    "gyro_y": {
+      "ks_statistic": 0.022,
+      "p_value": 0.71851,
+      "psi": 0.0095,
+      "drift_detected": false
+    },
+    "gyro_z": {
+      "ks_statistic": 0.0285,
+      "p_value": 0.39109,
+      "psi": 0.0115,
+      "drift_detected": false
+    },
+    "sleep_stage": {
+      "ks_statistic": 0.009,
+      "p_value": 1.0,
+      "psi": 0.0009,
+      "drift_detected": false
+    },
+    "activity_class": {
+      "ks_statistic": 0.014,
+      "p_value": 0.98958,
+      "psi": 0.0017,
+      "drift_detected": false
+    },
+    "is_hr_anomaly": {
+      "ks_statistic": 0.006,
+      "p_value": 1.0,
+      "psi": 0.0,
+      "drift_detected": false
+    },
+    "critical_spo2_drop": {
+      "ks_statistic": 0.002,
+      "p_value": 1.0,
+      "psi": 0.0,
+      "drift_detected": false
+    },
+    "glucose_pattern_flag": {
+      "ks_statistic": 0.006,
+      "p_value": 1.0,
+      "psi": 0.0,
+      "drift_detected": false
+    },
+    "risk_score_30d": {
+      "ks_statistic": 0.0155,
+      "p_value": 0.96996,
+      "psi": 0.0047,
+      "drift_detected": false
+    }
+  },
+  "requires_retraining": true
+}

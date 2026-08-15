@@ -1,0 +1,40 @@
+# Python & Envs
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Datasets & Big Data (trackeado por DVC o S3)
+datasets/raw/
+datasets/processed/*.parquet
+datasets/splits/*.parquet
+!datasets/splits/.gitkeep
+!datasets/raw/.gitkeep
+!datasets/processed/.gitkeep
+
+# DVC local storage
+.dvc/cache
+.dvc/tmp
+
+# MLflow runs locales
+mlruns/
+.mlflow/
+
+# Reports & Logs
+*.log
+monitoring/reports/*.html
+evaluation/reports/*.json
+
+# Env vars
+.env
+.env.local

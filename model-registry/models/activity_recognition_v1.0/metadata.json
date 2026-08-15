@@ -1,0 +1,9 @@
+{
+  "format": "portable_mobile_binary",
+  "quantized": true,
+  "input_shape": [
+    1,
+    7
+  ],
+  "target": "android"
+}
