@@ -1,5 +1,7 @@
 {
-  "format": "portable_binary",
+  "format": "onnx",
   "n_features": 8,
-  "target": "backend_go"
+  "target": "backend_go",
+  "sha256": "6cf59032b0781f0ed244e507d8010dea7d37b82e373dce49520e439188e30da1",
+  "size_kb": 0.13
 }

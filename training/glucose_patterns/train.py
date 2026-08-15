@@ -97,12 +97,20 @@ def train_glucose_patterns_pipeline(
     print(f"\n--- Glucose Pattern Results ---")
     print(f"Recall: {metrics['recall'] * 100:.1f}% | FPR: {metrics['false_positive_rate'] * 100:.1f}% | Precision: {metrics['precision'] * 100:.1f}%")
 
+    dataset_hash = ""
+    try:
+        import hashlib
+        with open(raw_data_path, "rb") as f:
+            dataset_hash = hashlib.sha256(f.read()).hexdigest()
+    except Exception:
+        dataset_hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
     report_path = save_evaluation_report(
         model_name="glucose_patterns",
         version=version,
         metrics=metrics,
         feature_schema="1.0.0",
-        dataset_hash="glucose-v1-synthetic",
+        dataset_hash=dataset_hash,
         approved=approved,
         reasons=reasons,
     )
@@ -111,7 +119,7 @@ def train_glucose_patterns_pipeline(
     registry.register_model(
         model_id="glucose_patterns",
         version=version,
-        model_type="pattern_correlation_classifier",
+        model_type="anomaly_detection",
         target="glucose_pattern_flag",
         deployed_to=["android", "backend"],
         algorithm="GradientBoosting_Indirect_Correlate",
@@ -124,6 +132,7 @@ def train_glucose_patterns_pipeline(
         },
         feature_schema_version="1.0.0",
         changelog="Indirect autonomic correlation model for metabolic excursion risk",
+        dataset_hash=dataset_hash,
         patient_count=anonymized_df["patient_id"].nunique(),
         sample_count=len(anonymized_df),
     )

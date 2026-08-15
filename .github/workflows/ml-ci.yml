@@ -23,20 +23,51 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pip-audit
+
+      - name: Dependency Vulnerability Audit (pip-audit)
+        run: |
+          pip-audit --desc on
 
       - name: Linting with Ruff & Black
         run: |
           ruff check .
           black --check .
 
-      - name: Type checking with Mypy
+      - name: Strict Type Checking with Mypy
         run: |
-          mypy . || true
+          mypy preprocessing evaluation export monitoring datasets
 
       - name: SAST Security Scan with Bandit
         run: |
-          bandit -r preprocessing training evaluation export monitoring -ll
+          bandit -r preprocessing training evaluation export monitoring datasets -ll
 
-      - name: Run Test Suite & Coverage
+      - name: Run Test Suite with Coverage Gate (>= 80%)
         run: |
-          pytest tests/ --cov=preprocessing --cov=evaluation --cov=training --cov=export --cov=monitoring --cov-report=term-missing
+          pytest tests/ --cov=preprocessing --cov=evaluation --cov=training --cov=export --cov=monitoring --cov=datasets --cov-fail-under=80 --cov-report=term-missing
+
+  training-and-export:
+    name: Model Catalog Training & Export Verification
+    needs: quality-and-security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute Full Model Training & Export Pipeline
+        run: |
+          python train_all.py
+
+      - name: Validate Model Registry & Artifacts
+        run: |
+          python -c "import json; reg = json.load(open('model-registry/registry.json')); assert len(reg['models']) == 7, f'Expected 7 models, got {len(reg[\"models\"])}'"

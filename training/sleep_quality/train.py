@@ -102,12 +102,20 @@ def train_sleep_quality_pipeline(
     print(f"\n--- Sleep Quality Results ---")
     print(f"Accuracy: {acc * 100:.1f}% | Latency P95: {metrics['latency_p95_ms']:.2f}ms | Size: {metrics['size_kb']:.1f} KB")
 
+    dataset_hash = ""
+    try:
+        import hashlib
+        with open(raw_data_path, "rb") as f:
+            dataset_hash = hashlib.sha256(f.read()).hexdigest()
+    except Exception:
+        dataset_hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
     report_path = save_evaluation_report(
         model_name="sleep_quality",
         version=version,
         metrics=metrics,
         feature_schema=FeatureExtractor.SCHEMA_VERSION,
-        dataset_hash="sleep-v1-synthetic",
+        dataset_hash=dataset_hash,
         approved=approved,
         reasons=reasons,
     )
@@ -116,7 +124,7 @@ def train_sleep_quality_pipeline(
     registry.register_model(
         model_id="sleep_quality",
         version=version,
-        model_type="multiclass_classifier",
+        model_type="classifier",
         target="sleep_stage",
         deployed_to=["android"],
         algorithm="RandomForestClassifier",
@@ -129,6 +137,7 @@ def train_sleep_quality_pipeline(
         },
         feature_schema_version=FeatureExtractor.SCHEMA_VERSION,
         changelog="Multi-stage sleep architecture based on nocturnal HRV and movement variance",
+        dataset_hash=dataset_hash,
         patient_count=anonymized_df["patient_id"].nunique(),
         sample_count=len(anonymized_df),
     )

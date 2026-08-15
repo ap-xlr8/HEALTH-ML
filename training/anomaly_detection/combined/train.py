@@ -110,12 +110,20 @@ def train_combined_vitals_pipeline(
     print(f"Recall: {metrics['recall'] * 100:.1f}% | FPR: {metrics['false_positive_rate'] * 100:.1f}% | Precision: {metrics['precision'] * 100:.1f}%")
     print(f"Approval: {'APPROVED' if approved else 'REJECTED'}")
 
+    dataset_hash = ""
+    try:
+        import hashlib
+        with open(raw_data_path, "rb") as f:
+            dataset_hash = hashlib.sha256(f.read()).hexdigest()
+    except Exception:
+        dataset_hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
     report_path = save_evaluation_report(
         model_name="combined_vitals",
         version=version,
         metrics=metrics,
         feature_schema=FeatureExtractor.SCHEMA_VERSION,
-        dataset_hash="vitals-v1-synthetic",
+        dataset_hash=dataset_hash,
         approved=approved,
         reasons=reasons,
     )
@@ -124,7 +132,7 @@ def train_combined_vitals_pipeline(
     registry.register_model(
         model_id="combined_vitals",
         version=version,
-        model_type="autoencoder_multivariate",
+        model_type="anomaly_detection",
         target="combined_vitals",
         deployed_to=["backend"],
         algorithm="MLP_AutoEncoder_Reconstruction",
@@ -137,6 +145,7 @@ def train_combined_vitals_pipeline(
         },
         feature_schema_version=FeatureExtractor.SCHEMA_VERSION,
         changelog="Deep multivariate AutoEncoder for cross-vital physiological shock and risk estimation",
+        dataset_hash=dataset_hash,
         patient_count=anonymized_df["patient_id"].nunique(),
         sample_count=len(anonymized_df),
     )

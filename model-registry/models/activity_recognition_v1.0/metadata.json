@@ -1,9 +1,11 @@
 {
-  "format": "portable_mobile_binary",
+  "format": "tflite",
   "quantized": true,
   "input_shape": [
     1,
     7
   ],
-  "target": "android"
+  "target": "android",
+  "sha256": "aa649f090a5dce02c94b86fd2d3f03488d4f79d76f6acd4e6ccdb82fa57e4ea6",
+  "size_kb": 0.06
 }

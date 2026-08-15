@@ -116,12 +116,20 @@ def train_heart_rate_pipeline(
     print(f"Inference Latency P95: {metrics['latency_p95_ms']:.2f} ms | Size: {metrics['size_kb']:.1f} KB")
     print(f"Approval Status: {'APPROVED' if approved else 'REJECTED'}")
 
+    dataset_hash = ""
+    try:
+        import hashlib
+        with open(raw_data_path, "rb") as f:
+            dataset_hash = hashlib.sha256(f.read()).hexdigest()
+    except Exception:
+        dataset_hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
     report_path = save_evaluation_report(
         model_name="heart_rate_anomaly",
         version=version,
         metrics=metrics,
         feature_schema=FeatureExtractor.SCHEMA_VERSION,
-        dataset_hash="cohort-v1-synthetic",
+        dataset_hash=dataset_hash,
         approved=approved,
         reasons=reasons,
     )
@@ -143,6 +151,7 @@ def train_heart_rate_pipeline(
         },
         feature_schema_version=FeatureExtractor.SCHEMA_VERSION,
         changelog="Calibrated Isolation Forest optimized for edge latency",
+        dataset_hash=dataset_hash,
         patient_count=anonymized_df["patient_id"].nunique(),
         sample_count=len(anonymized_df),
     )

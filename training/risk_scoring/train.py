@@ -100,12 +100,20 @@ def train_risk_scoring_pipeline(
     print(f"\n--- Risk Scoring (Cloud) Results ---")
     print(f"R2 Score: {r2:.3f} | RMSE: {metrics['rmse']} | Latency P95: {metrics['latency_p95_ms']:.2f}ms")
 
+    dataset_hash = ""
+    try:
+        import hashlib
+        with open(raw_data_path, "rb") as f:
+            dataset_hash = hashlib.sha256(f.read()).hexdigest()
+    except Exception:
+        dataset_hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
     report_path = save_evaluation_report(
         model_name="risk_score",
         version=version,
         metrics=metrics,
         feature_schema=FeatureExtractor.SCHEMA_VERSION,
-        dataset_hash="risk-v1-synthetic",
+        dataset_hash=dataset_hash,
         approved=approved,
         reasons=reasons,
     )
@@ -114,7 +122,7 @@ def train_risk_scoring_pipeline(
     registry.register_model(
         model_id="risk_score",
         version=version,
-        model_type="gradient_boosting_regressor",
+        model_type="regression",
         target="30_day_risk_score",
         deployed_to=["backend"],
         algorithm="HistGradientBoostingRegressor",
@@ -127,6 +135,7 @@ def train_risk_scoring_pipeline(
         },
         feature_schema_version=FeatureExtractor.SCHEMA_VERSION,
         changelog="Cloud population and patient risk predictor over 30-day vital trends",
+        dataset_hash=dataset_hash,
         patient_count=anonymized_df["patient_id"].nunique(),
         sample_count=len(anonymized_df),
     )
