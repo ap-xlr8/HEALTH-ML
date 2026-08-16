@@ -1,4 +1,4 @@
-"""SpO2 Critical Drop Detection Training Pipeline.
+﻿"""SpO2 Critical Drop Detection Training Pipeline.
 
 Combines physiological threshold rules with machine learning for contextual hypoxemia detection.
 """
@@ -75,7 +75,6 @@ def train_spo2_pipeline(
 
     y_train = train_df["critical_spo2_drop"].values
     y_val = val_df["critical_spo2_drop"].values
-    y_test = test_df["critical_spo2_drop"].values
 
     model = SpO2CriticalDetector(n_estimators=40)
     model.fit(X_train, y_train)

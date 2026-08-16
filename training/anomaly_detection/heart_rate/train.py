@@ -1,4 +1,4 @@
-"""Heart Rate Anomaly Detection Training Pipeline (Isolation Forest).
+﻿"""Heart Rate Anomaly Detection Training Pipeline (Isolation Forest).
 
 Trains, evaluates against clinical thresholds, and exports model for Android & Backend.
 """
@@ -87,7 +87,6 @@ def train_heart_rate_pipeline(
     X_test = normalizer.transform(X_test_raw)
 
     y_val = val_df["is_hr_anomaly"].values
-    y_test = test_df["is_hr_anomaly"].values
 
     anomaly_fraction = float(np.mean(train_df["is_hr_anomaly"]))
     contamination = max(0.04, min(0.12, anomaly_fraction))

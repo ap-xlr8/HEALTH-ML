@@ -1,4 +1,4 @@
-"""Combined Vitals Multivariate Anomaly Detection Training Pipeline (AutoEncoder).
+﻿"""Combined Vitals Multivariate Anomaly Detection Training Pipeline (AutoEncoder).
 
 Trains multivariate neural reconstruction model on HR, SpO2, RespRate, Temp, SysBP, DiaBP for Backend ONNX.
 """
@@ -83,7 +83,6 @@ def train_combined_vitals_pipeline(
     X_test = normalizer.transform(X_test_raw)
 
     y_val = val_df["is_hr_anomaly"].values
-    y_test = test_df["is_hr_anomaly"].values
 
     # Train AutoEncoder on train set
     model = MultivariateAutoEncoder(hidden_layer_sizes=(16, 4, 16), max_iter=250)

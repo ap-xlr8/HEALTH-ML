@@ -61,7 +61,7 @@ class ONNXExporter:
             with open(output_path, "wb") as f:
                 f.write(onnx_model.SerializeToString())
                 
-        except Exception as e:
+        except Exception:
             try:
                 import onnx  # type: ignore
                 from onnx import helper, TensorProto

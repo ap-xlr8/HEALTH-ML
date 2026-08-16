@@ -76,7 +76,7 @@ class TFLiteExporter:
                     f.write(tflite_binary)
                 converted_via_tf = True
         except Exception as e:
-            logger_msg = f"TensorFlow direct conversion not available: {e}"
+            _ = f"TensorFlow direct conversion not available: {e}"
 
         if not converted_via_tf:
             # For tree / scikit-learn estimators: serialize real joblib payload or raise error

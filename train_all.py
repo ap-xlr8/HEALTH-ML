@@ -5,6 +5,7 @@ from __future__ import annotations
 import sys
 import os
 import time
+import secrets
 
 # Ensure project root is in sys.path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -32,7 +33,7 @@ def main():
 
     # 1. Datasets Ingestion & Validation
     print("\n>>> 1. Datasets Ingestion & Validation...")
-    enc_key = os.getenv("DATA_ENCRYPTION_KEY") or "a1b2c3d4e5f60718293a4b5c6d7e8f90"
+    enc_key = os.getenv("DATA_ENCRYPTION_KEY") or secrets.token_hex(32)
     raw_data_path = generate_and_save_datasets(encryption_key=enc_key)
 
     # 2. Train all models
@@ -116,7 +117,7 @@ def main():
     print("\n>>> 4. Model Registry Status:")
     registry = ModelRegistry()
     for m_id, versions in registry.data.get("models", {}).items():
-        latest_ver = sorted(list(versions.keys()))[-1]
+        latest_ver = max(versions.keys())
         entry = versions[latest_ver]
         alg = entry.get("training", {}).get("algorithm", "N/A")
         print(f"  - [{m_id}] v{latest_ver} ({alg}) -> Targets: {entry['deployedTo']}")

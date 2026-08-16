@@ -1,4 +1,4 @@
-"""Physical Activity Recognition Training Pipeline (1D CNN / Multi-Layer Perceptron)."""
+﻿"""Physical Activity Recognition Training Pipeline (1D CNN / Multi-Layer Perceptron)."""
 
 from __future__ import annotations
 
@@ -73,7 +73,6 @@ def train_activity_recognition_pipeline(
 
     y_train = train_df["activity_class"].values
     y_val = val_df["activity_class"].values
-    y_test = test_df["activity_class"].values
 
     model = ActivityClassifier(hidden_layer_sizes=(32, 16), max_iter=250)
     model.fit(X_train, y_train)

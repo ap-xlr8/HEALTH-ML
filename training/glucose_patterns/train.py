@@ -1,4 +1,4 @@
-"""Glucose Patterns Estimation Training Pipeline.
+﻿"""Glucose Patterns Estimation Training Pipeline.
 
 Detects physiological patterns correlated with glycemic excursions from indirect wearable metrics.
 DISCLAIMER: Non-diagnostic helper; detects physiological correlates, not direct blood glucose.
@@ -72,7 +72,6 @@ def train_glucose_patterns_pipeline(
 
     y_train = train_df["glucose_pattern_flag"].values
     y_val = val_df["glucose_pattern_flag"].values
-    y_test = test_df["glucose_pattern_flag"].values
 
     model = GlucosePatternDetector(n_estimators=50)
     model.fit(X_train, y_train)

@@ -6,6 +6,7 @@ pandas==2.2.3
 pyarrow==19.0.1
 scikit-learn==1.6.1
 joblib==1.4.2
+requests==2.32.3
 cryptography==44.0.1
 onnx==1.17.0
 skl2onnx==1.17.0

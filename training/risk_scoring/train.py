@@ -1,4 +1,4 @@
-"""30-Day Population & Patient Risk Scoring Training Pipeline (Cloud Only).
+﻿"""30-Day Population & Patient Risk Scoring Training Pipeline (Cloud Only).
 
 Trains gradient boosting regressor for comprehensive multi-vital 30-day risk scoring.
 """
@@ -70,7 +70,6 @@ def train_risk_scoring_pipeline(
 
     y_train = train_df["risk_score_30d"].values
     y_val = val_df["risk_score_30d"].values
-    y_test = test_df["risk_score_30d"].values
 
     model = RiskScoringModel(max_iter=120, learning_rate=0.08)
     model.fit(X_train, y_train)

@@ -32,7 +32,7 @@ def process_and_anonymize(
         raise ValueError("Security Violation: Dataset lacks 'consent_for_ml_training' consent flag.")
 
     initial_count = len(df)
-    df_consented = df[df["consent_for_ml_training"] == True].copy()
+    df_consented = df[df["consent_for_ml_training"]].copy()
     consented_count = len(df_consented)
 
     if consented_count == 0:

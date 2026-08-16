@@ -1,4 +1,4 @@
-"""Sleep Quality and Sleep Stage Classification Training Pipeline (Random Forest)."""
+﻿"""Sleep Quality and Sleep Stage Classification Training Pipeline (Random Forest)."""
 
 from __future__ import annotations
 
@@ -74,7 +74,6 @@ def train_sleep_quality_pipeline(
 
     y_train = train_df["sleep_stage"].values
     y_val = val_df["sleep_stage"].values
-    y_test = test_df["sleep_stage"].values
 
     model = SleepQualityClassifier(n_estimators=50)
     model.fit(X_train, y_train)

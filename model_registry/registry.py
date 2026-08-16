@@ -20,7 +20,6 @@ def evaluate_clinical_status(model_type: str, metrics: Dict[str, Any]) -> str:
     if model_type in ["anomaly_detection", "critical_alert", "classifier"]:
         recall = metrics.get("recall", 0.0)
         fpr = metrics.get("fpr", 1.0)
-        precision = metrics.get("precision", 0.0)
         accuracy = metrics.get("accuracy", 0.0)
         
         # High-sensitivity clinical alert gate
